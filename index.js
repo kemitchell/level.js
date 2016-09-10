@@ -5,7 +5,7 @@ var AbstractLevelDOWN = require('abstract-leveldown').AbstractLevelDOWN
 var util = require('util')
 var Iterator = require('./iterator')
 var isBuffer = require('isbuffer')
-var xtend = require('xtend')
+var assign = require('object-assign')
 var toBuffer = require('typedarray-to-buffer')
 
 function Level(location) {
@@ -32,7 +32,7 @@ Level.prototype._open = function(options, callback) {
     }
   }
   
-  xtend(idbOpts, options)
+  assign(idbOpts, options)
   this.IDBOptions = idbOpts
   this.idb = new IDB(idbOpts)
 }
